@@ -15,10 +15,10 @@ class CSVReader
   end
 
   def create_hash (ary)
-    h = Array.new
+    h = Hash.new
     @headers.each_with_index do |header, i|
       value = ary[i].strip.gsub('"','')
-      h[header]=value unless value.empty?
+      h[header] = value unless value.empty?
     end
     h
   end
@@ -27,7 +27,7 @@ class CSVReader
     f = File.new(@fname, 'r')
     self.headers = f.readline
     while (!f.eof? && next_line = f.readline)
-      values = nextline.split(',')
+      values = next_line.split(',')
       hash = create_hash(values)
       yield(hash)
     end

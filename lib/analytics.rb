@@ -1,10 +1,12 @@
 class Analytics
+  attr_accessor :options
   def initialize (areas)
     @areas = areas
+    set_options
   end
 
   def set_options
-    @options = []
+    @options = Array.new
     @options << { menu_id: 1, menu_title: 'Areas count', method: :how_many }
     @options << { menu_id: 2, menu_title: 'Smallest Population (non 0)', method: :smallest_pop }
     @options << { menu_id: 3, menu_title: 'Larest Population', method: :largest_pop }
